@@ -1,16 +1,81 @@
-.card.disabled {
+.fluid-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    padding: 0 0 20px 0;
+}
+
+.remarks {
+    opacity: 0.8;
+}
+
+/* sections */
+
+.text-section {
+    padding: 50px;
+}
+
+.filter-section {
+    padding: 0 0 50px 0;
+    width: 90%;
+    max-width: 600px;
+}
+
+.component-wrapper {
+    padding: 0 0 30px 0;
+    position: relative;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    position: relative;
+    padding: 20px;
+    width: 100%;
+    max-width: 1400px;
+}
+
+/* links */
+
+.link {
+    margin: 0 20px;
+}
+
+.link.disabled, .card.disabled {
     pointer-events: none;
     opacity: 0.3;
 }
+
+/* buttons */
 
 .btn.disabled {
     cursor: default;
 }
 
-.fluid-container {
-    display: flex;
-    justify-content: center;
+.btn-circle {
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    position: fixed;
+    bottom: 35px;
+    right: 40px;
 }
+
+.download {
+    position: fixed;
+    height: 50px;
+    bottom: 40px;
+    width: 100%;
+    max-width: 200px;
+}
+
+/* cards */
 
 .card:hover {
     cursor: pointer;
@@ -38,22 +103,51 @@
     font-size: var(--default-font-size);
 }
 
-.wrapper {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    position: relative;
-    padding: 20px;
-    max-width: 1400px;
+/* dropdown */
+
+.filterBox {
+    box-sizing: border-box;
+    width: 100%;
+    position: sticky;
+    top: 0;
+    padding: 14px 20px;
+    border: none;
+    border-bottom: 1px solid #ddd;
 }
 
-.download {
-    position: fixed;
-    height: 50px;
-    bottom: 40px;
+.filterBox:focus {
+    outline: 3px solid #ddd;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: block;
+    position: absolute;
     width: 100%;
-    max-width: 200px;
+    top: 38px;
+    opacity: 0;
+    max-height: 0;
+    background-color: #f6f6f6;
+    overflow: auto;
+    border: 1px solid #ddd;
+    z-index: 1;
+    transition: all 0.3s;
+}
+
+.show.dropdown-content {
+    max-height: 350px;
+    opacity: 1;
+}
+
+.dropdown-item {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
 }
 
 @media only screen and (max-width: 992px) {
@@ -71,5 +165,11 @@
 @media only screen and (max-width: 600px) {
     .card {
         width: 100%;
+    }
+    .btn-circle {
+        bottom: 40px;
+        width: 50px;
+        height: 50px;
+        right: 5px;
     }
 }

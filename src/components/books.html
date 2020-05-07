@@ -1,6 +1,30 @@
 <div class="fluid-container">
+    <div class="text-section">
+        <h3 class="header">Springer Books</h3>
+        <p class="remarks">Please enable pop-ups and redirects from this site.</p>
+    </div>
+    <div class="filter-section">
+        <div class="component-wrapper">
+            <input class="form-control" type="text" v-model="search" placeholder="Search titles" aria-label="Search" />
+        </div>
+        <div class="component-wrapper">
+            <button class="btn btn-primary" @click="dropDown = !dropDown">Filter: {{filterStringFixed}}</button>
+            <div class="dropdown-content" :class="{show: dropDown}">
+                <input class="filterBox" type="text" placeholder="Search subjects" v-model="filter">
+                <div>
+                    <a class="dropdown-item" :class="{active: classification == filterStringFixed}" v-for="classification in classificationsFilteredList" href="javascript:void(0)"
+                        @click="filterList(classification)">{{classification}}</a>
+                </div>
+            </div>
+        </div>
+
+        <a class="link" href="javascript:void(0)" :class="{disabled: selected.length >= totalLength}"
+            @click="selectAll()">Select all</a>
+        <a class="link" href="javascript:void(0)" :class="{disabled: !selected.length}" @click="deselectAll()">Deselect
+            all</a>
+    </div>
     <div class="wrapper">
-        <div v-for="(data, i) in json" :key="i" class="card"
+        <div v-for="(data, i) in json" :key="i" class="card" v-if="show.includes(i)"
             :class="{active: selected.includes(i), disabled: !data['Download URL']}" @click="select(i)">
             <img class="card-img-top" :src="`${publicPath}images/${data['Book Title']}_${data['Copyright Year']}.jpg`"
                 alt="Missing Textbook Image" />
@@ -11,4 +35,5 @@
     </div>
     <button type="button" class="download btn btn-primary" :class="{disabled: !selected.length}"
         @click="openItems()">Open Items</button>
+    <a href="javascript:void(0)" @click="scrollToTop()"><i class="fas fa-chevron-circle-up btn-circle"></i></a>
 </div>

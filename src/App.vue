@@ -19,6 +19,9 @@ export default {
 :root {
   --default-font-size: 14px;
 }
+html {
+  scroll-behavior: smooth;
+}
 .app {
   font-size: var(--default-font-size);
   font-family: Avenir, Helvetica, Arial, sans-serif;
@@ -28,7 +31,7 @@ export default {
   color: #2c3e50;
   margin-top: 60px;
 }
-a:hover {
+a:hover, .link:hover {
     text-decoration: none;
 }
 </style>

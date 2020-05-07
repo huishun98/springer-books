@@ -2,15 +2,104 @@
 import json from "../json/Free+English+textbooks+with+download_url.json";
 
 export default {
-  name: "HelloWorld",
+  name: "Books",
   data() {
     return {
       publicPath: process.env.BASE_URL,
       json: json,
-      selected: []
+      selected: [],
+      show: [],
+      searchString: null,
+      dropDown: false,
+      filterString: "",
+      filterStringFixed: "",
+      filteredList: [],
+      searchedList: []
     };
   },
+  mounted() {
+    this.filterList("");
+    this.searchList("");
+  },
+  computed: {
+    classificationsFilteredList() {
+      return this.classifications.filter(classification => {
+        return classification
+          .toLowerCase()
+          .includes(this.filterString.toLowerCase());
+      });
+    },
+    classifications() {
+      const array = Object.values(json);
+      let classifications = [];
+      for (let i = 0; i < array.length; i++) {
+        const classification = array[i]["Subject Classification"].split("; ");
+        classifications = [...new Set([...classifications, ...classification])];
+      }
+      return classifications.sort();
+    },
+    totalLength() {
+      return Object.keys(this.json).length;
+    },
+    search: {
+      get() {
+        return this.searchString;
+      },
+      set(newVal) {
+        this.searchString = newVal;
+        this.searchList(newVal);
+      }
+    },
+    filter: {
+      get() {
+        return this.filterString;
+      },
+      set(newVal) {
+        if (newVal.length <= 0) {
+          this.filterList("");
+        }
+        this.filterString = newVal;
+      }
+    }
+  },
   methods: {
+    calculateResult() {
+      this.show = this.searchedList.filter(element =>
+        this.filteredList.includes(element)
+      );
+    },
+    filterList(rawClassification) {
+      let classification = rawClassification;
+      if (classification == this.filterString) {
+        classification = "";
+      }
+      this.filterString = classification;
+      this.filterStringFixed = classification;
+      const filtered = Object.keys(this.json).filter(key => {
+        return this.json[key]["Subject Classification"].includes(
+          classification
+        );
+      });
+      this.filteredList = filtered;
+      this.calculateResult();
+    },
+    searchList(searchString) {
+      const filtered = Object.keys(this.json).filter(key => {
+        return this.json[key]["Book Title"]
+          .toLowerCase()
+          .includes(searchString.toLowerCase());
+      });
+      this.searchedList = filtered;
+      this.calculateResult();
+    },
+    selectAll() {
+      this.selected = this.selected.concat(
+        this.show.filter(item => this.selected.indexOf(item) < 0)
+      );
+    },
+    deselectAll() {
+      this.selected = [];
+    },
     select(i) {
       this.selected.includes(i)
         ? this.selected.splice(this.selected.indexOf(i), 1)
@@ -19,10 +108,13 @@ export default {
     openItems() {
       let data_list = [];
       for (let i = 0; i < this.selected.length; i++) {
-        const data = this.json[this.selected[i]]
+        const data = this.json[this.selected[i]];
         const downloadUrl = data["Download URL"];
-        window.open(downloadUrl)
+        window.open(downloadUrl);
       }
+    },
+    scrollToTop() {
+      window.scrollTo(0, 0);
     }
   }
 };
