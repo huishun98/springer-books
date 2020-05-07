@@ -14,14 +14,37 @@ export default {
       filterString: "",
       filterStringFixed: "",
       filteredList: [],
-      searchedList: []
+      searchedList: [],
+      modalOpen: false
     };
   },
   mounted() {
     this.filterList("");
     this.searchList("");
   },
+  watch: {
+    modalOpen: function() {
+      if (this.modalOpen) {
+        document.documentElement.style.overflow = "hidden";
+        return;
+      }
+      document.documentElement.style.overflow = "auto";
+    }
+  },
   computed: {
+    disableSelectAll() {
+      return (
+        this.show.filter(item => this.selected.indexOf(item) < 0).length <= 0
+      );
+    },
+    selectedTitles() {
+      return Object.keys(this.json)
+        .filter(key => this.selected.includes(key))
+        .reduce((arr, key) => {
+          arr.push({ title: this.json[key]["Book Title"], index: key });
+          return arr;
+        }, []);
+    },
     classificationsFilteredList() {
       return this.classifications.filter(classification => {
         return classification
@@ -37,9 +60,6 @@ export default {
         classifications = [...new Set([...classifications, ...classification])];
       }
       return classifications.sort();
-    },
-    totalLength() {
-      return Object.keys(this.json).length;
     },
     search: {
       get() {
@@ -63,6 +83,9 @@ export default {
     }
   },
   methods: {
+    deselect(i) {
+      this.selected = this.selected.filter(index => index !== i);
+    },
     calculateResult() {
       this.show = this.searchedList.filter(element =>
         this.filteredList.includes(element)
