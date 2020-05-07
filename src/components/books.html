@@ -12,7 +12,8 @@
             <div class="dropdown-content" :class="{show: dropDown}">
                 <input class="filterBox" type="text" placeholder="Search subjects" v-model="filter">
                 <div>
-                    <a class="dropdown-item" :class="{active: classification == filterStringFixed}" v-for="classification in classificationsFilteredList" href="javascript:void(0)"
+                    <a class="dropdown-item" :class="{active: classification == filterStringFixed}"
+                        v-for="classification in classificationsFilteredList" href="javascript:void(0)"
                         @click="filterList(classification)">{{classification}}</a>
                 </div>
             </div>
@@ -22,6 +23,7 @@
             @click="selectAll()">Select all</a>
         <a class="link" href="javascript:void(0)" :class="{disabled: !selected.length}" @click="deselectAll()">Deselect
             all</a>
+        <!-- <a class="link" href="javascript:void(0)" :class="{disabled: !selected.length}" @click="deselectAll()">View selected books</a> -->
     </div>
     <div class="wrapper">
         <div v-for="(data, i) in json" :key="i" class="card" v-if="show.includes(i)"
