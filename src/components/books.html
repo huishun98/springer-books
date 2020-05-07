@@ -1,0 +1,14 @@
+<div class="fluid-container">
+    <div class="wrapper">
+        <div v-for="(data, i) in json" :key="i" class="card"
+            :class="{active: selected.includes(i), disabled: !data['Download URL']}" @click="select(i)">
+            <img class="card-img-top" :src="`${publicPath}images/${data['Book Title']}_${data['Copyright Year']}.jpg`"
+                alt="Missing Textbook Image" />
+            <div class="card-body">
+                <h5 class="card-title">{{data['Book Title']}}</h5>
+            </div>
+        </div>
+    </div>
+    <button type="button" class="download btn btn-primary" :class="{disabled: !selected.length}"
+        @click="openItems()">Open Items</button>
+</div>

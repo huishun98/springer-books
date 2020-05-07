@@ -1,0 +1,75 @@
+.card.disabled {
+    pointer-events: none;
+    opacity: 0.3;
+}
+
+.btn.disabled {
+    cursor: default;
+}
+
+.fluid-container {
+    display: flex;
+    justify-content: center;
+}
+
+.card:hover {
+    cursor: pointer;
+    box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.25);
+}
+
+.card.active {
+    cursor: pointer;
+    box-shadow: 0 0 20px 0 rgb(0, 0, 0);
+}
+
+.card {
+    margin-bottom: 50px;
+    width: 15%;
+}
+
+.card-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card-title {
+    margin-bottom: 0;
+    font-size: var(--default-font-size);
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    position: relative;
+    padding: 20px;
+    max-width: 1400px;
+}
+
+.download {
+    position: fixed;
+    height: 50px;
+    bottom: 40px;
+    width: 100%;
+    max-width: 200px;
+}
+
+@media only screen and (max-width: 992px) {
+    .card {
+        width: 22%;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .card {
+        width: 45%;
+    }
+}
+
+@media only screen and (max-width: 600px) {
+    .card {
+        width: 100%;
+    }
+}
