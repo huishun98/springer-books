@@ -37,6 +37,6 @@ a:hover, .no-dec:hover {
     text-decoration: none;
 }
 .btn-circle path {
-    fill: var(--dark-color) !important;
+    fill: var(--dark-color);
 }
 </style>
