@@ -1,7 +1,14 @@
 <div>
     <div class="side-modal" :class="{active: modalOpen}">
-        <a href="javascript:void(0)" @click="modalOpen = !modalOpen"><i
-                class="fas fa-chevron-circle-right btn-right btn-circle"></i></a>
+        <a href="javascript:void(0)" @click="modalOpen = !modalOpen">
+            <svg data-v-6881a9aa="" class="svg-inline--fa fa-chevron-circle-right fa-w-16 btn-right btn-circle"
+                aria-hidden="true" focusable="false" data-prefix="fas" data-icon="chevron-circle-right" role="img"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                <path fill="currentColor"
+                    d="M256 8c137 0 248 111 248 248S393 504 256 504 8 393 8 256 119 8 256 8zm113.9 231L234.4 103.5c-9.4-9.4-24.6-9.4-33.9 0l-17 17c-9.4 9.4-9.4 24.6 0 33.9L285.1 256 183.5 357.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L369.9 273c9.4-9.4 9.4-24.6 0-34z">
+                </path>
+            </svg>
+        </a>
         <div class="modal-inner">
             <h4 class="header">Selected Books</h4>
             <p class="remarks">{{selected.length}} books selected</p>
@@ -11,7 +18,15 @@
             <ul class="list-group">
                 <li v-for="book in selectedTitles" :key="book.index" class="list-group-item">
                     <a :href="book.url" target="_blank" class="no-dec">{{book.title}}</a><a href="javascript:void(0)"
-                        @click="deselect(book.index)"><i class="fas fa-times"></i></a></li>
+                        @click="deselect(book.index)">
+                        <svg data-v-6881a9aa="" class="svg-inline--fa fa-times fa-w-11" aria-hidden="true"
+                            focusable="false" data-prefix="fas" data-icon="times" role="img"
+                            xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" data-fa-i2svg="">
+                            <path fill="currentColor"
+                                d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z">
+                            </path>
+                        </svg>
+                    </a></li>
             </ul>
         </div>
     </div>
@@ -88,7 +103,13 @@
         </div>
         <button type="button" class="download btn btn-primary" :class="{disabled: !selected.length}"
             @click="openItems()">Open Books</button>
-        <a href="javascript:void(0)" @click="scrollToTop()"><i
-                class="fas fa-chevron-circle-up btn-circle btn-up"></i></a>
+        <a href="javascript:void(0)" @click="scrollToTop()"><svg data-v-6881a9aa=""
+                class="svg-inline--fa fa-chevron-circle-up fa-w-16 btn-circle btn-up" aria-hidden="true"
+                focusable="false" data-prefix="fas" data-icon="chevron-circle-up" role="img"
+                xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg="">
+                <path fill="currentColor"
+                    d="M8 256C8 119 119 8 256 8s248 111 248 248-111 248-248 248S8 393 8 256zm231-113.9L103.5 277.6c-9.4 9.4-9.4 24.6 0 33.9l17 17c9.4 9.4 24.6 9.4 33.9 0L256 226.9l101.6 101.6c9.4 9.4 24.6 9.4 33.9 0l17-17c9.4-9.4 9.4-24.6 0-33.9L273 142.1c-9.4-9.4-24.6-9.4-34 0z">
+                </path>
+            </svg></a>
     </div>
 </div>
