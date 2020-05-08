@@ -9,8 +9,9 @@
                 @click="deselectAll()">Deselect
                 all</a>
             <ul class="list-group">
-                <li v-for="book in selectedTitles" :key="book.index" class="list-group-item">{{book.title}}<a
-                        href="javascript:void(0)" @click="deselect(book.index)"><i class="fas fa-times"></i></a></li>
+                <li v-for="book in selectedTitles" :key="book.index" class="list-group-item">
+                    <a :href="book.url" target="_blank" class="no-dec">{{book.title}}</a><a href="javascript:void(0)"
+                        @click="deselect(book.index)"><i class="fas fa-times"></i></a></li>
             </ul>
         </div>
     </div>
@@ -18,24 +19,53 @@
         <div class="text-section">
             <h3 class="header">Springer Books</h3>
             <p class="remarks">Please enable pop-ups and redirects from this site.</p>
+            <div>
+                <a class="link no-dec" data-toggle="collapse" href="#collapse" role="button" aria-expanded="false"
+                    aria-controls="collapse">
+                    About
+                </a>
+                <div class="collapse" id="collapse">
+                    <p class="card card-body about-body remarks">
+                        Springer released over 400 book titles that can be downloaded free of charge during the
+                        coronavirus outbreak. These books will be made available at least until the end of July, 2020.
+                        <br><br>
+                        This is a simple UI that facilitates easy selection of books to download.
+                        <br><br><br>
+                        <u>How to use</u>
+                        <br>
+                        <ol>
+                            <li>Select books you want to download.</li>
+                            <li>Click "Open Books".
+                                <br><br>
+                                Selected book titles will open in new tabs for you to download.</li>
+                        </ol>
+                        <br><br>
+                        <u>Disclaimer</u>
+                        <br>
+                        Only English books are included in this selection.
+                        <br>
+                        Books without functioning download links are excluded from this selection.
+                    </p>
+                </div>
+            </div>
         </div>
-        <div class="filter-section">
+        <div class="section">
             <div class="component-wrapper">
                 <input class="form-control" type="text" v-model="search" placeholder="Search titles"
                     aria-label="Search" />
             </div>
             <div class="component-wrapper">
-                <a class="link" href="javascript:void(0)" :class="{disabled: disableSelectAll}"
+                <a class="link no-dec" href="javascript:void(0)" :class="{disabled: disableSelectAll}"
                     @click="selectAll()">Select all</a>
-                <a class="link" href="javascript:void(0)" :class="{disabled: !selected.length}"
+                <a class="link no-dec" href="javascript:void(0)" :class="{disabled: !selected.length}"
                     @click="deselectAll()">Deselect
                     all</a>
-                <a class="link" href="javascript:void(0)" :class="{disabled: !selected.length}"
+                <a class="link no-dec" href="javascript:void(0)" :class="{disabled: !selected.length}"
                     @click="modalOpen = !modalOpen ">View selected books</a>
             </div>
 
             <div class="component-wrapper">
-                <button class="btn btn-primary" @click="dropDown = !dropDown">Filter: {{filterStringFixed}}</button>
+                <button class="btn btn-dark" @click="dropDown = !dropDown">Filter: {{filterStringFixed}}</button>
                 <div class="dropdown-content" :class="{show: dropDown}">
                     <input class="filterBox" type="text" placeholder="Search subjects" v-model="filter">
                     <div>
@@ -52,13 +82,13 @@
                 <img class="card-img-top" :src="data['logo URL']" alt="Missing Textbook Image" />
                 <div class="card-body">
                     <h5 class="card-title">{{data['Book Title']}}</h5>
+                    <a :href="data['Download URL']" target="_blank" class="btn btn-dark">View</a>
                 </div>
             </div>
         </div>
         <button type="button" class="download btn btn-primary" :class="{disabled: !selected.length}"
-            @click="openItems()">Open Items</button>
+            @click="openItems()">Open Books</button>
         <a href="javascript:void(0)" @click="scrollToTop()"><i
                 class="fas fa-chevron-circle-up btn-circle btn-up"></i></a>
     </div>
-
 </div>

@@ -41,7 +41,7 @@ export default {
       return Object.keys(this.json)
         .filter(key => this.selected.includes(key))
         .reduce((arr, key) => {
-          arr.push({ title: this.json[key]["Book Title"], index: key });
+          arr.push({ title: this.json[key]["Book Title"], index: key, url: this.json[key]["Download URL"] });
           return arr;
         }, []);
     },
@@ -93,10 +93,9 @@ export default {
     },
     filterList(rawClassification) {
       let classification = rawClassification;
-      if (classification == this.filterString) {
+      if (classification == this.filterStringFixed) {
         classification = "";
       }
-      this.filterString = classification;
       this.filterStringFixed = classification;
       const filtered = Object.keys(this.json).filter(key => {
         return this.json[key]["Subject Classification"].includes(

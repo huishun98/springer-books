@@ -18,6 +18,8 @@ export default {
 <style>
 :root {
   --default-font-size: 14px;
+  --dark-color: #343a40;
+  --default-box-shadow: 0 0 60px 0 rgba(0, 0, 0, 0.25);
 }
 html {
   scroll-behavior: smooth;
@@ -31,7 +33,10 @@ html {
   color: #2c3e50;
   margin-top: 60px;
 }
-a:hover, .link:hover {
+a:hover, .no-dec:hover {
     text-decoration: none;
+}
+.btn-circle path {
+    fill: var(--dark-color) !important;
 }
 </style>

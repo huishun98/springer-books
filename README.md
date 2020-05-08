@@ -16,11 +16,6 @@ Mac users who are familiar with running codes on computers can consider using th
 1. Run the file `start_ui.sh`.
 
 
-## Future improvements
-- [ ] Add filter feature
-- [ ] Add summary feature so that user can see which books are selected
-
-
 ## Diclaimer
 
 Not tested extensively on Linux and Windows. 
