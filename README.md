@@ -7,7 +7,9 @@ These books will be made [available](https://www.springernature.com/gp/librarian
 
 ## Description
 
-A simple UI that facilitates easy selection of books to download.
+A UI that facilitates easy selection of books to download. Built using Vue.js.
+
+The live version can be found here: https://springer-books-links.herokuapp.com/.
 
 Mac users who are familiar with running codes on computers can consider using this project: https://github.com/huishun98/springer_books, which can be run locally and downloads the books directly into the `Downloads` folder.
 
@@ -23,4 +25,4 @@ Not tested extensively on Linux and Windows.
 
 ## Acknowledgement
 
-- This project is adapted from Bernard's project which uses Python to automate the downloading of the textbooks. The repository can be found here: https://github.com/bernard-mlab/Springer-eBook-Download.git
+- This project uses data collected by Bernard. Bernard's project, which uses Python to automate the downloading of the textbooks, can be found here: https://github.com/bernard-mlab/Springer-eBook-Download.git.
