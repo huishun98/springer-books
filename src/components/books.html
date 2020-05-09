@@ -30,6 +30,7 @@
             </ul>
         </div>
     </div>
+    <div class="overlay" :class="{active: modalOpen}" @click="modalOpen = false"></div>
     <div class="main fluid-container" :class="{light: modalOpen}">
         <div class="text-section">
             <h3 class="header">Springer Books</h3>
@@ -97,7 +98,7 @@
                 <img class="card-img-top" :src="data['logo URL']" alt="Missing Textbook Image" />
                 <div class="card-body">
                     <h5 class="card-title">{{data['Book Title']}}</h5>
-                    <a :href="data['Download URL']" target="_blank" class="btn btn-dark">View</a>
+                    <a :href="data['Download URL']" target="_blank" class="btn btn-dark" @click="select(i)">View</a>
                 </div>
             </div>
         </div>
